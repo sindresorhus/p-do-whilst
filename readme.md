@@ -17,16 +17,17 @@ $ npm install p-do-whilst
 ```js
 const pDoWhilst = require('p-do-whilst');
 
-let count = 0;
+(async () => {
+	let count = 0;
 
-pDoWhilst(() => {
-	count++;
-}, () => {
-	return count < 5;
-}).then(() => {
+	await pDoWhilst(
+		() => count++,
+		() => count < 5
+	);
+
 	console.log(count);
 	//=> 5
-});
+})();
 ```
 
 

@@ -1,11 +1,11 @@
 import test from 'ava';
-import m from '.';
+import pDoWhilst from '.';
 
 test('main', async t => {
 	const result = [];
 	let counter = 0;
 
-	await m(() => {
+	await pDoWhilst(() => {
 		result.push(counter++);
 	}, () => result.length < 7);
 
@@ -13,11 +13,35 @@ test('main', async t => {
 	t.deepEqual(result, [0, 1, 2, 3, 4, 5, 6]);
 });
 
+test('calling sequence is correct', async t => {
+	const sequence = [];
+	let counter = 0;
+
+	await pDoWhilst(
+		() => {
+			sequence.push(`action${counter}`);
+			counter++;
+		},
+		() => {
+			sequence.push(`predicate${counter}`);
+			return counter < 2;
+		}
+	);
+
+	t.is(counter, 2);
+	t.deepEqual(sequence, [
+		'action0',
+		'predicate1',
+		'action1',
+		'predicate2'
+	]);
+});
+
 test('works with action returning a promise', async t => {
 	const result = [];
 	let counter = 0;
 
-	await m(
+	await pDoWhilst(
 		() => new Promise(resolve => {
 			result.push(counter++);
 			resolve();
@@ -33,7 +57,7 @@ test('stops on error', async t => {
 	const result = [];
 	let counter = 0;
 
-	const prom = m(
+	const prom = pDoWhilst(
 		() => new Promise(resolve => {
 			if (counter === 7) {
 				throw new Error('BAAD');
@@ -45,7 +69,7 @@ test('stops on error', async t => {
 		() => result.length < 10
 	);
 
-	await t.throws(prom, 'BAAD');
+	await t.throwsAsync(prom, 'BAAD');
 	t.is(counter, 7);
 	t.deepEqual(result, [0, 1, 2, 3, 4, 5, 6]);
 });
