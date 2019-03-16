@@ -19,14 +19,15 @@ const pDoWhilst = require('p-do-whilst');
 
 let count = 0;
 
-pDoWhilst(() => {
-	count++;
-}, () => {
-	return count < 5;
-}).then(() => {
+(async () => {
+	await pDoWhilst(
+		() => count++,
+		() => count < 5
+	);
+
 	console.log(count);
 	//=> 5
-});
+})();
 ```
 
 
