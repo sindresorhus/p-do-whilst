@@ -1,5 +1,5 @@
-import {expectType} from 'tsd-check';
-import pDoWhilst from '.';
+import {expectType} from 'tsd';
+import pDoWhilst = require('.');
 
 let count = 0;
 
