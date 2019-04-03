@@ -9,4 +9,5 @@ const pDoWhilst = async (action, condition) => {
 };
 
 module.exports = pDoWhilst;
+// TODO: Remove this for the next major release
 module.exports.default = pDoWhilst;
