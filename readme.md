@@ -1,4 +1,4 @@
-# p-do-whilst [![Build Status](https://travis-ci.org/sindresorhus/p-do-whilst.svg?branch=master)](https://travis-ci.org/sindresorhus/p-do-whilst)
+# p-do-whilst
 
 > Calls a function repeatedly while a condition returns true and then resolves the promise
 
