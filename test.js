@@ -1,5 +1,5 @@
 import test from 'ava';
-import pDoWhilst from '.';
+import pDoWhilst from './index.js';
 
 test('main', async t => {
 	const result = [];
@@ -69,7 +69,7 @@ test('stops on error', async t => {
 		() => result.length < 10
 	);
 
-	await t.throwsAsync(prom, 'BAAD');
+	await t.throwsAsync(prom, {message: 'BAAD'});
 	t.is(counter, 7);
 	t.deepEqual(result, [0, 1, 2, 3, 4, 5, 6]);
 });

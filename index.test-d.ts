@@ -1,5 +1,5 @@
 import {expectType} from 'tsd';
-import pDoWhilst = require('.');
+import pDoWhilst from './index.js';
 
 let count = 0;
 

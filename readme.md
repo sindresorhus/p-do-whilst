@@ -4,32 +4,27 @@
 
 Think async version of the [`do…while` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/do...while).
 
-
 ## Install
 
 ```
 $ npm install p-do-whilst
 ```
 
-
 ## Usage
 
 ```js
-const pDoWhilst = require('p-do-whilst');
+import pDoWhilst from 'p-do-whilst';
 
-(async () => {
-	let count = 0;
+let count = 0;
 
-	await pDoWhilst(
-		() => count++,
-		() => count < 5
-	);
+await pDoWhilst(
+	() => count++,
+	() => count < 5
+);
 
-	console.log(count);
-	//=> 5
-})();
+console.log(count);
+//=> 5
 ```
-
 
 ## API
 
@@ -51,15 +46,9 @@ Type: `Function`
 
 Expected to return a boolean of whether to continue.
 
-
 ## Related
 
 - [p-whilst](https://github.com/sindresorhus/p-whilst) - While a condition returns true, calls a function repeatedly, and then resolves the promise
 - [p-forever](https://github.com/sindresorhus/p-forever) - Run promise-returning & async functions repeatedly until you end it
 - [p-wait-for](https://github.com/sindresorhus/p-wait-for) - Wait for a condition to be true
 - [More…](https://github.com/sindresorhus/promise-fun)
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
