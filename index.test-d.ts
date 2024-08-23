@@ -3,12 +3,12 @@ import pDoWhilst from './index.js';
 
 let count = 0;
 
-expectType<Promise<void>>(
+expectType<Promise<number>>(
 	pDoWhilst(
 		() => count++,
 		currentCount => {
 			expectType<number>(currentCount);
-			return currentCount < 5;
+			return (currentCount) < 5;
 		}
 	)
 );

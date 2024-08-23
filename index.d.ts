@@ -1,8 +1,8 @@
 /**
-Executes `action` repeatedly while `condition` returns `true` and then resolves the promise. Rejects if `action` returns a promise that rejects or if an error is thrown anywhere.
+Executes `action` repeatedly while `condition` returns `true` and then resolves to the result of the last call to `action`. Rejects if `action` returns a promise that rejects or if an error is thrown anywhere.
 
 @param action - Action to run for each iteration. You can return a promise and it will be handled.
-@param condition - Expected to return a boolean of whether to continue.
+@param condition - Expected to return a `boolean` or a `Promise<boolean>` of whether to continue.
 
 @example
 ```
@@ -20,6 +20,7 @@ console.log(count);
 ```
 */
 export default function pDoWhilst<ValueType>(
-	action: () => ValueType | PromiseLike<ValueType>,
-	condition: (value: ValueType) => boolean
-): Promise<void>;
+	action: (value: ValueType) => ValueType | PromiseLike<ValueType>,
+	condition: (value: ValueType) => boolean | PromiseLike<boolean>,
+	initialValue?: ValueType,
+): Promise<ValueType>;

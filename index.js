@@ -1,7 +1,9 @@
-export default async function pDoWhilst(action, condition) {
-	const actionResult = await action();
+export default async function pDoWhilst(action, condition, initialValue) {
+	const actionResult = await action(initialValue);
 
-	if (condition(actionResult)) {
-		return pDoWhilst(action, condition);
+	if (await condition(actionResult)) {
+		return pDoWhilst(action, condition, actionResult);
 	}
+
+	return actionResult;
 }

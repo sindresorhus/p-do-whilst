@@ -28,13 +28,14 @@ console.log(count);
 
 ## API
 
-### pDoWhilst(action, condition)
+### pDoWhilst(action, condition, initialValue?)
 
-Executes `action` repeatedly while `condition` returns `true` and then resolves the promise. Rejects if `action` returns a promise that rejects or if an error is thrown anywhere.
+Executes `action` repeatedly while `condition` returns `true` and then resolves to the result of the last call to `action`. Rejects if `action` returns a promise that rejects or if an error is thrown anywhere.
 
 #### action
 
 Type: `Function`
+Arguments: The value the last call to `action` function returns or `initialValue` for the first iteration.
 
 Action to run for each iteration.
 
@@ -43,8 +44,9 @@ You can return a promise and it will be handled.
 #### condition
 
 Type: `Function`
+Arguments: The value the `action` function returns.
 
-Expected to return a boolean of whether to continue.
+Expected to return a `boolean` or a `Promise<boolean>` of whether to continue.
 
 ## Related
 
