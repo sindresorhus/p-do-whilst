@@ -34,7 +34,7 @@ Executes `action` repeatedly while `condition` returns `true` and then resolves 
 
 #### action
 
-Type: `Function`
+Type: `Function`\
 Arguments: The value the last call to `action` function returns or `initialValue` for the first iteration.
 
 Action to run for each iteration.
@@ -43,7 +43,7 @@ You can return a promise and it will be handled.
 
 #### condition
 
-Type: `Function`
+Type: `Function`\
 Arguments: The value the `action` function returns.
 
 Expected to return a `boolean` or a `Promise<boolean>` of whether to continue.
