@@ -18,6 +18,20 @@ await pDoWhilst(
 console.log(count);
 //=> 5
 ```
+
+@example
+```
+import pDoWhilst from 'p-do-whilst';
+
+const count = await pDoWhilst(
+	currentCount => currentCount + 1,
+	currentCount => currentCount < 5,
+	0
+);
+
+console.log(count);
+//=> 5
+```
 */
 export default function pDoWhilst<ValueType>(
 	action: (value: ValueType) => ValueType | PromiseLike<ValueType>,

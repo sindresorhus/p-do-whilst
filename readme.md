@@ -12,6 +12,8 @@ npm install p-do-whilst
 
 ## Usage
 
+Choose your preferred style:
+
 ```js
 import pDoWhilst from 'p-do-whilst';
 
@@ -20,6 +22,21 @@ let count = 0;
 await pDoWhilst(
 	() => count++,
 	() => count < 5
+);
+
+console.log(count);
+//=> 5
+```
+
+Or:
+
+```js
+import pDoWhilst from 'p-do-whilst';
+
+const count = await pDoWhilst(
+	currentCount => currentCount + 1,
+	currentCount => currentCount < 5,
+	0
 );
 
 console.log(count);
